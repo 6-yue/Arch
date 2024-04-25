@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="./leaflet.css" rel="stylesheet">
+  <script src="./leaflet.js"></script>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    #map {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='map'>
+  </div>
+  <script>
+    var map = L.map('map',
+      {
+        zoomSnap: 0.1, // 地图的有效缩放级别
+        maxZoom: 15,
+        // crs: L.CRS.EPSG4326,  // 高德不是这个坐标系   
+        zoomControl: true,
+        editable: true,
+        // wheelPxPerZoomLevel:	60  // 鼠标滚轮缩放 较小的值将使滚轮轮缩放更快
+      }).setView([29.592024, 106.231126], 13); // 重庆璧山区经纬度
+    let baseLayer = L.tileLayer("http://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}", {
+      attribution: '&copy; 高德地图',
+      maxZoom: 15,
+      minZoom: 3,
+      subdomains: "1234",
+      zoom: 3
+    });
+    map.addLayer(baseLayer);
+    // map.on('layeradd',function() {
+    //   console.log(layeradd)
+
+    // })
+    map.on('click', function (event) {
+      console.log(event) // 返回当前点击的经纬度，及当前容器的坐标
+      let { lat, lng } = event.latlng
+      // map.setZoomAround([lat, lng],3)
+
+      // console.log(map.attributionControl._map._layers) // 获取当前图层的比例尺
+      // map.setZoom(6) // 指定到对应的缩放级别
+      // shapingba = [29.554000,106.468590]
+      // // panTo 平移到指定位置，flyTo平移到指定位置 并可设置缩放级别
+      // map.panTo(shapingba)
+      // map.flyTo(shapingba, 3)
+
+    })
+  </script>
+</body>
+
+</html>

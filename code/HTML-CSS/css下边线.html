@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>调试css</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title span {
+            background: linear-gradient(to right, #e72918, #00aeec) no-repeat right bottom;
+            background-size: 0 2px;
+            transition: background-size 1000ms;
+            border-radius: 2%;
+        }
+
+        .title span:hover {
+            background-position-x: left;
+            background-size: 100% 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 class="title">
+        <span>十年后，你会发现CSS才是你最搞不懂的技术</span>
+    </h2>
+</body>
+
+</html>

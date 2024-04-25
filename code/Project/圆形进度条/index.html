@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Circular Progress | CSS Only</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+  </div>
+  <script>
+    let [LoadArr, divContainer] = [
+      [
+        { num: 100, name: 'ArchLinux' },
+        { num: 75, name: 'HTML' },
+        { num: 35, name: 'JavaScript' },
+        { num: 50, name: 'CSS' },
+      ],
+      document.querySelector('.container')
+    ]
+    for (let i = 0; i < LoadArr.length; i++) {
+      divContainer.innerHTML += `
+    <div class="card">
+      <div class="percent" style="--clr:#04fc43;--num:${LoadArr[i].num};">
+        <div class="dot"></div>
+        <svg>
+          <circle cx="70" cy="70" r="70"></circle>
+        </svg>
+        <div class="number">
+          <h2>${LoadArr[i].num}<span>%</span></h2>
+          <p>${LoadArr[i].name}</p>
+        </div>
+      </div>
+    </div>
+    `
+    }
+
+  </script>
+</body>
+
+</html>

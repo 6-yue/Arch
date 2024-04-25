@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./01.css  " />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #f4f4f4;
+      }
+
+      #box {
+        width: 310px;
+        height: 310px;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .option {
+        width: 100px;
+        height: 100px;
+        background: #fff;
+        text-align: center;
+        line-height: 100px;
+        border: 1px solid red;
+        transform: all 0.5s;
+      }
+
+      #start {
+        width: 100px;
+        height: 100px;
+        background: #fff;
+        text-align: center;
+        line-height: 100px;
+        border: 1px solid red;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <div class="option">1</div>
+      <div class="option">2</div>
+      <div class="option">3</div>
+      <div class="option">4</div>
+      <div id="start">抽奖</div>
+      <div class="option">6</div>
+      <div class="option">7</div>
+      <div class="option">8</div>
+      <div class="option">9</div>
+    </div>
+
+    <script>
+      let btn = document.getElementById('start')
+      let options = document.getElementsByClassName('option')
+      btn.onclick = function () {
+        let timer
+        let num = 0
+        let res = 0
+        if (timer == null) {
+          timer = setInterval(() => {
+            num++
+            let arr = [0, 3, 5, 6, 7, 4, 2, 1]
+            for (let i = 0; i < options.length; i++) {
+              options[i].style.backgroundColor = '#fff'
+            }
+            options[arr[res]].style.backgroundColor = 'pink'
+            console.log(arr[num], arr[res])
+            res++
+            if (res >= arr.length) res = 0
+            if (num >= 21) {
+              clearInterval(timer)
+              timer = null
+            }
+          }, 1000)
+        }
+      }
+    </script>
+  </body>
+</html>

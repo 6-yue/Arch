@@ -1,0 +1,50 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>三角形</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .three_1 {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      /* border-width: 0 40px 50px; */
+      border-width: 0 40px 40px 0;
+      /* border-color: transparent transparent #d3dd2f; */
+      border-color: transparent green transparent transparent;
+    }
+
+    .three_2 {
+      width: 0;
+      height: 0;
+      border: 50px solid;
+      border-top-color: aqua;
+      border: bottom color #988;
+      border-left-color: #392;
+      border-right-color: #666;
+    }
+
+    .three_3 {
+      width: 200px;
+      height: 200px;
+      background-color: skyblue;
+      /* 这个值是怎么来的呢？使用 clip-path 可以为沿路径放置的每个点定义坐标。在这种情况下，就定义了三个点：top-left (0 0)、bottom-left (0% 100%)、right-center (100% 50%)。效果如下： */
+      clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="three_1"></div>
+  <div class="three_2"></div>
+  <div class="three_3"></div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>base64加解密</title>
+</head>
+
+<body>
+  <script>
+    // base64编码
+    function getEncode64(str) {
+      return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+        function toSolidBytes(match, p1) {
+          return String.fromCharCode('0x' + p1);
+        }));
+
+    };
+
+    // base64解码
+    function getDecode(str) {
+      return decodeURIComponent(atob(str).split('').map(function (c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+    };
+
+    let str = JSON.stringify([
+      { name: '小明', age: 18 }
+    ]);
+    console.log(str);
+
+    let str64 = getEncode64(str);
+    console.log(str64);
+
+    let str64_t = JSON.parse(getDecode(str64));
+    console.log(str64_t);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<html>
+
+<head>
+  <title>AES加密</title>
+  <script src="./crypto-js.min.js"></script>
+</head>
+
+<body>
+  <script>
+    function encrypt(input, key) {
+      return CryptoJS.AES.encrypt(input, key).toString();
+    }
+
+    function decrypt(input, key) {
+      return CryptoJS.AES.decrypt(input, key).toString(CryptoJS.enc.Utf8);
+    }
+
+    // 设置密钥
+    let key = '大哥,你还好吗？ab1231\'!#@^* $ & (#)';
+
+    let str = JSON.stringify([
+      { name: '小明', age: 18 },
+      { text: '科技是第一生产力' }
+    ]);
+    console.log(str);
+
+    // 加密
+    let strAes = encrypt(str, key);
+    console.log(strAes);
+
+    // 解密
+    let strAesTxt = JSON.parse(decrypt(strAes, key));
+    console.log(strAesTxt);
+  </script>
+</body>
+
+</html>

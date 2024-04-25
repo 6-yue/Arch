@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>防抖与节流</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    input {
+      width: 120px;
+      height: 20px;
+      border-radius: 10px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" placeholder="用来测试防抖">
+  <script>
+    // 防抖
+    document.querySelector('input').addEventListener('input',debounce(demo, 2000))
+    
+    function debounce(fn, time) {
+      let timer = null
+      return ()=> {
+        if(timer) clearTimeout(timer)
+        timer = setTimeout(fn, time)
+      }
+    }
+
+    function demo() {
+      console.log('我来展示防抖')
+    }
+
+    // 节流
+    function throttle(time, fn) {
+      let timer = 0
+      return ()=> {
+        const now = new Date();
+        if(now-timer>=time) {
+
+          fn()
+          timer = now
+        }
+      }
+    }
+
+    function fn() {
+      setTimeout(()=> {
+        console.log('节流')
+      }, 500)
+    }
+
+    document.querySelector('input').addEventListener('mousemove', throttle(500, fn))
+  </script>
+</body>
+</html>
